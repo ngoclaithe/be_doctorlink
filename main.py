@@ -31,8 +31,8 @@ app.add_middleware(
 
 Base.metadata.create_all(bind=engine)
 
-static_dir = os.path.join(os.path.dirname(__file__), "static")
-app.mount("/static", StaticFiles(directory=static_dir), name="static")
+# static_dir = os.path.join(os.path.dirname(__file__), "static")
+# app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
 app.include_router(users.router)
 app.include_router(detail_doctor.router)
