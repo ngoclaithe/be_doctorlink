@@ -21,6 +21,12 @@ def read_detail_doctor(user_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Detail doctor not found")
     return detail
 
+@router.get("/specialty/{specialty_id}", response_model=List[DetailDoctorResponse])
+def read_doctors_by_specialty(specialty_id: int, db: Session = Depends(get_db)):
+    service = DetailDoctorService(db)
+    doctors = service.get_doctors_by_specialty_id(specialty_id)
+    return doctors
+
 @router.post("/", response_model=DetailDoctorResponse)
 def create_detail_doctor(detail: DetailDoctorCreate, db: Session = Depends(get_db)):
     service = DetailDoctorService(db)

@@ -11,6 +11,9 @@ class DetailDoctorService:
 
     def get_detail_doctor(self, user_id: int):
         return self.db.query(DetailDoctor).filter(DetailDoctor.user_id == user_id).first()
+        
+    def get_doctors_by_specialty_id(self, specialty_id: int):
+        return self.db.query(DetailDoctor).filter(DetailDoctor.specialty_id == specialty_id).all()
 
     def create_detail_doctor(self, detail: DetailDoctorCreate):
         new_detail = DetailDoctor(**detail.dict())

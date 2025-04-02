@@ -12,7 +12,8 @@ class DetailCustomerService:
         self.db.commit()
         self.db.refresh(new_detail)
         return new_detail
-
+    def get_all_customer(self):
+        return self.db.query(DetailCustomer).all()
     def get_detail_customer(self, user_id: int):
         return self.db.query(DetailCustomer).filter(DetailCustomer.user_id == user_id).first()
 

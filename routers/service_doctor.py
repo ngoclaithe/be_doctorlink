@@ -4,8 +4,12 @@ from app.schemas.service_doctor import ServiceDoctorCreate, ServiceDoctorRespons
 from app.services.service_doctor import ServiceDoctorService
 from app.database import get_db
 
-router = APIRouter(prefix="/service_doctor", tags=["Service Doctor"])
+router = APIRouter(prefix="/service", tags=["Service Doctor"])
 
+@router.get("/", response_model=list[ServiceDoctorResponse])
+def get_all_services(db: Session = Depends(get_db)):
+    service = ServiceDoctorService(db)
+    return service.get_all_services()
 @router.post("/", response_model=ServiceDoctorResponse)
 def create(data: ServiceDoctorCreate, db: Session = Depends(get_db)):
     service = ServiceDoctorService(db)

@@ -12,7 +12,8 @@ class ServiceDoctorService:
         self.db.commit()
         self.db.refresh(new_service)
         return new_service
-
+    def get_all_services(self):
+        return self.db.query(ServiceDoctor).all()
     def get_service(self, service_id: int):
         return self.db.query(ServiceDoctor).filter(ServiceDoctor.id == service_id).first()
 

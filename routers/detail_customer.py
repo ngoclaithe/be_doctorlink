@@ -6,6 +6,10 @@ from app.database import get_db
 
 router = APIRouter(prefix="/detail_customer", tags=["Detail Customer"])
 
+@router.get("/", response_model=list[DetailCustomerResponse])
+def get_all_customer(db: Session = Depends(get_db)):
+    service = DetailCustomerService(db)
+    return service.get_all_customer()
 @router.post("/", response_model=DetailCustomerResponse)
 def create(data: DetailCustomerCreate, db: Session = Depends(get_db)):
     service = DetailCustomerService(db)

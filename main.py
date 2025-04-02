@@ -9,6 +9,7 @@ from .routers import (
     appointment,
     bill,
     ca_kham_benh,
+    ca_lam_viec,
     clinics,
     detail_customer,
     doctor_certificates,
@@ -39,6 +40,7 @@ app.include_router(specialty.router)
 app.include_router(bill.router)
 app.include_router(appointment.router)
 app.include_router(ca_kham_benh.router)
+app.include_router(ca_lam_viec.router)
 app.include_router(clinics.router)
 app.include_router(detail_customer.router)
 app.include_router(doctor_certificates.router)
